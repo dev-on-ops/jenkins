@@ -6,17 +6,21 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Hello World"'
-                sh 'echo $TESTCRED'
-                sh 'echo "The secret value is: $TESTCRED" > /tmp/file'
-                sh 'cat /tmp/file'
-                sh 'cp /tmp/file /tmp/file1'
-                sh 'cat /tmp/file1'
                 sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
+                    echo "#!/bin/bash
+                    exit 1" >> /tmp/test.sh
+                    chmod +x /tmp/test.sh
+                    /tmp/test.sh
                 '''
             }
+        }
+    }
+    post {
+        always {
+            sh 'echo test'
+        }
+        failure {
+            sh 'echo fail'
         }
     }
 }
