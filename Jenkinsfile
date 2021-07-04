@@ -8,7 +8,7 @@ pipeline {
             steps {
                 sh '''
                     echo "#!/bin/bash
-                    exit 1" >> /tmp/test.sh
+                    exit 0" >> /tmp/test.sh
                     chmod +x /tmp/test.sh
                     /tmp/test.sh
                 '''
