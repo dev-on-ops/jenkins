@@ -12,7 +12,7 @@ pipeline {
                 '''
                 sh '''
                     chmod +x script1.sh
-                    ./scrip1.sh
+                    ./script1.sh
                 '''
             }
         }
