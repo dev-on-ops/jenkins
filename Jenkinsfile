@@ -7,10 +7,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                    echo "#!/bin/bash
-                    exit 0" >> /tmp/test.sh
-                    chmod +x /tmp/test.sh
-                    /tmp/test.sh
+                    chmod +x test.sh
+                    ./test.sh
                 '''
             }
         }
