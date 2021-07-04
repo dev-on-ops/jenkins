@@ -10,27 +10,26 @@ pipeline {
                     chmod +x test.sh
                     ./test.sh
                 '''
-            }
-        }
-        stage('Sanity check') {
-            steps {
-                input "Does the staging environment look ok?"
+                sh '''
+                    chmod +x script1.sh
+                    ./scrip1.sh
+                '''
             }
         }
         stage('Deploy') {
             steps {
                 sh '''
-                    echo "its a yes"
+                    echo "its worked"
                 '''
             }
         }
     }
     post {
         always {
-            sh 'echo test'
+            sh 'echo "Done"'
         }
         failure {
-            sh 'echo fail'
+            sh 'echo "fail"'
         }
     }
 }
